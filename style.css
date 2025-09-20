@@ -1,0 +1,11 @@
+div[data-testid="stExpander"] details summary p{
+    font-size: 20px;
+}
+
+[data-testid="stExpander"] details:hover summary{
+    background-color: rgba(130, 220, 245, 0.8);
+}
+
+img[data-testid="stLogo"] {
+            height: 3.5rem;
+}
