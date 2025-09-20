@@ -1,6 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv("/etc/proxy.env")
-
 import streamlit as st
 import requests
 import pandas as pd
@@ -9,29 +6,12 @@ import time
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 import json
-import joblib
 import plotly.express as px
 
 from statsmodels.tsa.api import VAR
 
 pd.options.plotting.backend = "plotly"
 
-from utils import timming, clean_duplicate_cols
-
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
-####################
-proxies = {
-    'http': 'mihnea_andrei:Papaie040291!@proxy.us.dell.com:80',
-    'https': 'mihnea_andrei:Papaie040291!@proxy.us.dell.com:80',
-}
-################################################
-session = requests.Session()
-retry = Retry(connect=3, backoff_factor=0.5)
-adapter = HTTPAdapter(max_retries=retry)
-session.mount('http://', adapter)
-session.mount('https://', adapter)
-session.proxies.update(proxies)
 #############
 #Import utilities depending on server
 ############
@@ -74,6 +54,9 @@ def expo_compounding(data,col):
             count+=1
     return data
 
+def timming(since):
+    time_elapsed=time.time()-since
+    return round(time_elapsed,4)
 ########################
 #Streamlit styling
 ######################
