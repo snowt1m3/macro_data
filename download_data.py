@@ -1,6 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv("/etc/proxy.env")
-
 import streamlit as st
 import xmltodict
 import time
@@ -10,25 +7,10 @@ from dateutil.relativedelta import relativedelta
 import plotly.express as px 
 import json
 import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
 
 import warnings
 warnings.simplefilter(action='ignore')
 
-from utils import timming, clean_duplicate_cols
-
-proxies = {
-    'http': 'mihnea_andrei:Papaie040291!@proxy.us.dell.com:80',
-    'https': 'mihnea_andrei:Papaie040291!@proxy.us.dell.com:80',
-}
-
-session = requests.Session()
-retry = Retry(connect=3, backoff_factor=0.5)
-adapter = HTTPAdapter(max_retries=retry)
-session.mount('http://', adapter)
-session.mount('https://', adapter)
-session.proxies.update(proxies)
 ########################
 #Streamlit styling
 ######################
