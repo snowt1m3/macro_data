@@ -1,6 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv("/etc/proxy.env")
-
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
@@ -14,8 +11,6 @@ pd.options.plotting.backend = "plotly"
 #############
 #Import utilities depending on server
 ############
-from utils import timming, clean_duplicate_cols
-
 dict_variables={"Real GDP growth":"NGDP_RPCH","GDP per capita, current price":"NGDPDPC",
                 "Inflation rate":"PCPIPCH", "Unemployment rate":"LUR", "General government gross debt":"GGXWDG_NGDP"}
 
@@ -49,6 +44,9 @@ def expo_compounding(data,col):
             count+=1
     return data
 
+def timming(since):
+    time_elapsed=time.time()-since
+    return round(time_elapsed,4)
 ########################
 #Streamlit styling
 ######################
@@ -82,7 +80,7 @@ st.header("IMF dashboard")
 col_top1, col_top2, col_top3 = st.columns(3)
 col_top1.metric(label=":eyes: Views:",value=len(pageviews),delta=None)   
 with col_top2:
-    st.image("images/dell_logo.jpg",caption="Dell",width=64)
+    st.image("images/dell_logo.png",caption="Dell",width=64)
 ##############################
 with st.expander(":grey_question: Info"):
     st.markdown(
