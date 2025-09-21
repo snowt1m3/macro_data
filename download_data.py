@@ -96,8 +96,8 @@ with st.sidebar:
     start_date=st.date_input("Start date:",value=datetime(2022,1,1), 
                              min_value=datetime(1900,1,1),max_value=datetime(2030,1,1),format="MM/DD/YYYY")
     
-    select_orig_variable=st.selectbox("Macro variable:",sorted(list(dict_variables.keys())+["All"]),index=None)
-    select_orig_countries=st.multiselect("Country:",sorted(list(dict_countries.keys())+["All"]),"All")
+    select_orig_variable=st.selectbox("Macro variable:",sorted(list(dict_variables.keys())),index=None)
+    select_orig_countries=st.multiselect("Country:",sorted(list(dict_countries.keys())),sorted(list(dict_countries.keys()))[0])
     select_scale=st.selectbox("Choose scale:",sorted(["Monthly (interpolated)","Yearly (original)"]))
 
     btn=st.button("Submit")
