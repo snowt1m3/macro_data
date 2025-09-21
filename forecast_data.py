@@ -8,8 +8,6 @@ from dateutil.relativedelta import relativedelta
 import json
 import plotly.express as px
 
-from statsmodels.tsa.api import VAR
-
 pd.options.plotting.backend = "plotly"
 
 #############
